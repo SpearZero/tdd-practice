@@ -1,3 +1,3 @@
-public enum RCP {
+public enum RPC {
     ROCK, PAPER, SCISSORS, INVALID
 }

@@ -4,18 +4,18 @@ public class User extends Participant{
         super();
     }
 
-    public User(RCPConverter rcpConverter) {
+    public User(RPCGame rcpConverter) {
         super(rcpConverter);
     }
 
     @Override
-    public RCP putRCP() {
+    public RPC putRPC() {
         int random = (int)(Math.random() * 3 + 1) ;
         return rcpConverter.convert(random);
     }
 
     @Override
-    public RCP putRCP(int input) {
+    public RPC putRPC(int input) {
         return rcpConverter.convert(input);
     }
 }

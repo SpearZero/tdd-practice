@@ -1,13 +1,13 @@
 abstract public class Participant {
-    protected RCPConverter rcpConverter;
+    protected RPCGame rcpConverter;
 
     public Participant() {}
 
-    public Participant(RCPConverter rcpConverter) {
+    public Participant(RPCGame rcpConverter) {
         this.rcpConverter = rcpConverter;
     }
 
-    abstract public RCP putRCP();
+    abstract public RPC putRPC();
 
-    abstract public RCP putRCP(int input);
+    abstract public RPC putRPC(int input);
 }
