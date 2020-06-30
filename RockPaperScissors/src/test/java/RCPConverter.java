@@ -4,6 +4,6 @@ public class RCPConverter {
         if(2 == input) return RCP.PAPER;
         if(3 == input) return RCP.SCISSORS;
 
-        return RCP.ROCK;
+        return RCP.INVALID;
     }
 }
