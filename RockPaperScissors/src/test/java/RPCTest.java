@@ -86,6 +86,36 @@ public class RPCTest {
         assertEquals(GameResult.LOSE, gameResult);
     }
 
+    @Test
+    public void 사용자가_3_가위를_입력하고_컴퓨터가_1을_입력하면_LOSE() {
+        GameResult gameResult = playAndResult(3,1);
+
+        assertEquals(GameResult.LOSE, gameResult);
+    }
+
+    @Test
+    public void 사용자가_3_가위를_입력하고_컴퓨터가_2를_입력하면_WIN() {
+        GameResult gameResult = playAndResult(3,2);
+
+        assertEquals(GameResult.WIN, gameResult);
+    }
+
+    @Test
+    public void 사용자가_3_가위를_입력하고_컴퓨터가_3을_입력하면_DRAW() {
+        GameResult gameResult = playAndResult(3,3);
+
+        assertEquals(GameResult.DRAW, gameResult);
+    }
+
+    @Test
+    public void 사용자가_유효한_값을_입력하지_않을경우_INVALID() {
+        GameResult gameResult = playAndResult(-1,4);
+        assertEquals(GameResult.INVALID, gameResult);
+
+        gameResult = playAndResult(100, 3);
+        assertEquals(GameResult.INVALID, gameResult);
+    }
+
     private GameResult playAndResult(int userInput, int computerInput) {
         RPC userRPC = user.putRPC(userInput);
         RPC computerRPC = computer.putRPC(computerInput);
