@@ -4,8 +4,8 @@ public class Computer extends Participant{
         super();
     }
 
-    public Computer(RPCGame rcpConverter) {
-        super(rcpConverter);
+    public Computer(RPCConverter rpcConverter) {
+        super(rpcConverter);
     }
 
     @Override

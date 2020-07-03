@@ -1,9 +1,9 @@
 abstract public class Participant {
-    protected RPCGame rcpConverter;
+    protected RPCConverter rcpConverter;
 
     public Participant() {}
 
-    public Participant(RPCGame rcpConverter) {
+    public Participant(RPCConverter rcpConverter) {
         this.rcpConverter = rcpConverter;
     }
 

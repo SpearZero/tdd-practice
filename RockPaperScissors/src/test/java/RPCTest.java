@@ -5,9 +5,10 @@ import java.util.EnumSet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RPCTest {
+    private RPCConverter converter = new RPCConverter();
     private RPCGame rpcGame = new RPCGame();
-    private User user = new User(rpcGame);
-    private Computer computer = new Computer(rpcGame);
+    private User user = new User(converter);
+    private Computer computer = new Computer(converter);
 
     @Test
     public void 사용자가_1을_입력하면_주먹을_반환() {
@@ -45,28 +46,51 @@ public class RPCTest {
 
     @Test
     public void 사용자가_1_주먹을_입력하고_컴퓨터가_1을_입력하면_DRAW() {
-        RPC userRPC = user.putRPC(1);
-        RPC computerRPC = computer.putRPC(1);
-        GameResult gameResult = rpcGame.game(userRPC, computerRPC);
+        GameResult gameResult = playAndResult(1,1);
 
         assertEquals(GameResult.DRAW, gameResult);
     }
 
     @Test
     public void 사용자가_1_주먹을_입력하고_컴퓨터가_2_보를_입력하면_LOSE() {
-        RPC userRPC = user.putRPC(1);
-        RPC computerRPC = computer.putRPC(2);
-        GameResult gameResult = rpcGame.game(userRPC, computerRPC);
+        GameResult gameResult = playAndResult(1,2);
 
         assertEquals(GameResult.LOSE, gameResult);
     }
 
     @Test
     public void 사용자가_1_주먹을_입력하고_컴퓨터가_3_가위를_입력하면_WIN() {
-        RPC userRPC = user.putRPC(1);
-        RPC computerRPC = computer.putRPC(3);
-        GameResult gameResult = rpcGame.game(userRPC, computerRPC);
+        GameResult gameResult = playAndResult(1,3);
 
         assertEquals(GameResult.WIN, gameResult);
+    }
+
+    @Test
+    public void 사용자가_2_보를_입력하고_컴퓨터가_1을_입력하면_WIN() {
+        GameResult gameResult = playAndResult(2,1);
+
+        assertEquals(GameResult.WIN, gameResult);
+    }
+
+    @Test
+    public void 사용자가_2_보를_입력하고_컴퓨터가_2를_입력하면_DRAW() {
+        GameResult gameResult = playAndResult(2,2);
+
+        assertEquals(GameResult.DRAW, gameResult);
+    }
+
+    @Test
+    public void 사용자가_2_보를_입력하고_컴퓨터가_3을_입력하면_LOSE() {
+        GameResult gameResult = playAndResult(2,3);
+
+        assertEquals(GameResult.LOSE, gameResult);
+    }
+
+    private GameResult playAndResult(int userInput, int computerInput) {
+        RPC userRPC = user.putRPC(userInput);
+        RPC computerRPC = computer.putRPC(computerInput);
+        GameResult gameResult = rpcGame.game(userRPC, computerRPC);
+
+        return gameResult;
     }
 }

@@ -4,8 +4,8 @@ public class User extends Participant{
         super();
     }
 
-    public User(RPCGame rcpConverter) {
-        super(rcpConverter);
+    public User(RPCConverter rpcConverter) {
+        super(rpcConverter);
     }
 
     @Override
